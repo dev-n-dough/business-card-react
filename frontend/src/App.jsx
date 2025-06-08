@@ -1,22 +1,32 @@
 import { Card } from '../../components/Card'
+import { CreateCard } from '../../components/CreateCard';
+import { useState } from 'react';
 
 function App() {
 
-  const akshat_details = {
-    username : "Akshat",
-    description : "Upcoming pre-final yearite at IITR",
-    linkedin : "https://www.linkedin.com/in/akshat-arora-2493a3292/",
-    twitter : "https://x.com/0xAech",
-    interests : "Swimming,Badmintion"
-  };
+  // const cards = [{
+  //   username : "Akshat",
+  //   description : "Upcoming pre-final yearite at IITR",
+  //   linkedin : "https://www.linkedin.com/in/akshat-arora-2493a3292/",
+  //   twitter : "https://x.com/0xAech",
+  //   interests : "Swimming,Badmintion"
+  // }];
+
+  const [cards,setCards] = useState([]);
+
+  fetch("http://localhost:3000/cards")
+  .then(async function(res){
+    const json = await res.json();
+    setCards(json.cards);
+    })
 
   return (
     <div>
-      <Card details = {akshat_details}></Card>
+      <CreateCard></CreateCard>
+      <Card cards = {cards}></Card>
     </div>
   )
 }
 
 export default App
 
-// I have not done any CSS, only that is different in the solutions.
