@@ -4,3 +4,4 @@ Stack used : React,MongoDB,Zod,JS
 
 To do later : 
 - Styling(preferably using Tailwind)
+- Add editing functionality
